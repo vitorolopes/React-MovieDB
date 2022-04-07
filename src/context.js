@@ -6,15 +6,14 @@ import React, { useContext, useState, useEffect } from 'react';
 // OMDb parameters
 // s: Movie title to search for
 // https://www.omdbapi.com/?apikey=[mykey]&s=matrix
-const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
-// console.log(API_ENDPOINT);
+export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
 
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [query, setQuery] = useState("Matrix");
+    const [query, setQuery] = useState("Batman");
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState({msg: "", show: false })
 
@@ -34,7 +33,6 @@ const AppProvider = ({children}) => {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     useEffect(() => {
@@ -46,7 +44,9 @@ const AppProvider = ({children}) => {
 
     return(
         <AppContext.Provider value={
-            {isLoading, query, movies, error, setQuery} 
+            {isLoading, query, movies, error, 
+            setQuery, setIsLoading
+            } 
         }>
             {children}
         </AppContext.Provider>
