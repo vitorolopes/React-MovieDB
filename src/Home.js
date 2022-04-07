@@ -4,10 +4,10 @@ import SearchForm from './SearchForm'
 
 const Home = () => {
   return (
-    <div>
+    <main>
         <SearchForm/>
         <Movies/>
-    </div>
+    </main>
   )
 }
 
